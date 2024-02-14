@@ -1,4 +1,0 @@
-run = "./bacola index.bacola"
-
-[nix]
-channel = "stable-21_11"
