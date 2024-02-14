@@ -1,0 +1,382 @@
+native function comments
+  (ARGS) => {
+    return;
+  }
+constructor comments ({//$1},{[["1","comment"]]},{[]})
+
+
+native function string
+  (ARGS) => {
+    return String(ARGS.txt);
+  }
+constructor string ({"$1"},{[["1","txt"]]},{[]})
+
+
+constructor string ({'$1'},{[["1","txt"]]},{[]})
+native function print
+  (ARGS) => {
+    if (typeof(ARGS.txt) == 'number') {
+      process.stdout.write(`#${ARGS.txt}#\n`);
+    } else {
+      process.stdout.write(`${String(ARGS.txt)}\n`);
+    }
+  }
+constructor print ({print = $1.},{[["1","txt"]]},{["txt"]})
+
+native function true
+  () => {
+    return true
+  }
+
+constructor true ({true},{[]},{[]})
+
+native function false
+  () => {
+    return false
+  }
+
+constructor false ({false},{[]},{[]})
+
+native function exit
+  (ARGS) => {
+    process.exit()
+  }
+
+constructor exit ({exit.},{[]},{[]})
+
+native function printf
+  (ARGS) => {
+    process.stdout.write(ARGS.txt);
+  }
+
+constructor printf ({printf = $1.},{[["1","txt"]]},{["txt"]})
+
+//native function eatme.md
+//  (ARGS) => {
+//    return "pls eatme.md"
+//  }
+
+//constructor eatme.md ({eatmeDOTmd},{[]},{[]})
+
+native function clear
+  (ARGS) => {
+    console.clear()
+  }
+
+constructor clear ({clear.},{[]},{[]})
+native function random
+  (ARGS) => {
+    return Math.random() * (ARGS.max - ARGS.min + 1) + ARGS.min;
+  }
+constructor random ({random $1 $2},{[["1","min"], ["2", "max"]]},{["min","max"]})
+native function randomfloor
+  (ARGS) => {
+    return Math.floor(Math.random() * (ARGS.max - ARGS.min + 1)) + ARGS.min;
+  }
+constructor randomfloor ({randomint $1 $2},{[["1","min"], ["2", "max"]]},{["min","max"]})
+
+native function randombool
+  (ARGS) => {
+    return Boolean(Math.floor(Math.random() * (1 - 0 + 1)) + 0 ? 1 : 0);
+  }
+
+constructor randombool ({randombool},{[]},{[]})
+
+native function number
+  (ARGS) => {
+    return Number(ARGS.num)
+  }
+
+constructor number ({#$1#},{[["1","num"]]},{[]})
+
+//default (start exec)
+
+native function floor
+  (ARGS) => {
+    return Math.floor(ARGS.num);
+  }
+constructor floor ({#_ $1 _#},{[["1","num"]]},{["num"]})
+native function letter
+  (ARGS) => {
+    return;
+  }
+constructor letter ({a.},{[]},{[]})
+constructor exit ({e.},{[]},{[]})
+
+native function multilineComments
+  (ARGS) => {
+    return;
+  }
+
+constructor multilineComments ({//{$1}//},{[["1", "comments"]]},{[]})
+
+native function resetvars
+  (ARGS) => {
+    var fs = require("fs");
+    fs.writeFileSync(__dirname + "/variables.json", JSON.stringify(require(__dirname + "/variablesdefault.json"), null, "\t"))
+  }
+
+constructor resetvars ({resetvars.},{[]},{[]})
+
+native function loop
+  (ARGS) => {
+    for (var i = 0; i < ARGS.times; i++){
+      if (broken) {
+        broken = false;
+        break;
+      }
+      if (skip) {
+        skip = false;
+        continue;
+      }
+      let program = ARGS.code;
+      let _l = compileLines(program,syntaxoptions);
+      _l = compileLines(program,syntax);
+      for(let [i, line] of _l.entries()) {
+        readFunction(line, false, i);
+      }
+    }
+  }
+
+constructor loop ({loop $1 {$2}},{[["1", "times"],["2", "code"]]},{["times"]})
+
+native function codeBlock
+  (ARGS) => {
+    let program = ARGS.code;
+    let _l = compileLines(program,syntaxoptions);
+    _l = compileLines(program,syntax);
+    for(let [i, line] of _l.entries()) {
+      readFunction(line, false, i);
+    }
+  }
+
+constructor codeBlock ({{$1}},{[["1", "code"]]},{[]})
+
+native function codeBlock2
+  (ARGS) => {
+    return ARGS.code;
+  }
+
+constructor codeBlock2 ({($1)},{[["1", "code"]]},{["code"]})
+
+native function toNum
+  (ARGS) => {
+    return Number(ARGS.str);
+  }
+
+constructor toNum ({number $1},{[["1", "str"]]},{["str"]})
+
+native function toStr
+  (ARGS) => {
+    return String(ARGS.num);
+  }
+
+constructor toStr ({string $1},{[["1", "num"]]},{["num"]})
+
+native function wait
+  (ARGS) => {
+    return new Promise(resolve => setTimeout(resolve, ARGS.num));
+  }
+constructor wait ({wait $1.},{[["1","num"]]},{["num"]})
+
+native function waitExecution
+  (ARGS) => {
+    function execute() {
+      let program = ARGS.code;
+      let _l = compileLines(program,syntaxoptions);
+      _l = compileLines(program,syntax);
+      for(let [i, line] of _l.entries()) {
+        readFunction(line, false, i);
+      }
+    }
+    setTimeout(execute, ARGS.num);
+  }
+constructor waitExecution ({wait $1 {$2}},{[["1","num"],["2", "code"]]},{["num"]})
+
+native function toggleignore
+  (ARGS) => {
+    ignore = !ignore;
+    return ignore;
+  }
+
+constructor toggleignore ({!TOGGLEIGNORE},{[]},{[]})
+
+native function undefined
+  () => {
+    return undefined
+  }
+
+constructor undefined ({undefined},{[]},{[]})
+
+native function null
+  () => {
+    return null
+  }
+
+constructor null ({null},{[]},{[]})
+
+native function cli
+  (ARGS) => {
+    const { exec } = require("child_process");
+    exec(ARGS.code, (error, stdout, stderr) => {
+      if (error) {
+        console.log("\x1b[31m%s\x1b[0m", `Execution Error: error: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.log("\x1b[31m%s\x1b[0m", `Execution Error: stderr: ${stderr}`);
+        return;
+      }
+      console.log(`${stdout}`);
+    });
+  }
+
+constructor cli ({% {$1}},{[["1","code"]]},{[]})
+constructor cli ({@ {$1}},{[["1","code"]]},{[]})
+constructor cli ({cli {$1}},{[["1","code"]]},{[]})
+constructor cli ({%{$1}},{[["1","code"]]},{[]})
+constructor cli ({@{$1}},{[["1","code"]]},{[]})
+constructor cli ({cli{$1}},{[["1","code"]]},{[]})
+
+native function function
+  (ARGS) => {
+    var args = ARGS.args != null ? ARGS.args.split(/\s*(,)(?=(?:[^"']|["'][^"']*["'])*$)\s*/g) : null;
+    variables.args[ARGS.name] = [];
+    if (args != null) {
+      for (var i = 0; i < args.length; i++) {
+        variables.args[ARGS.name].push(args[i]);
+      }
+    }
+    functions[ARGS.name] = ARGS.code;
+  }
+
+native function call
+  (ARGS) => {
+    new Promise(resolve => setTimeout(resolve, 1));
+    variables.return.locked = false
+    variables.return.value = null;
+    let program = functions[ARGS.name];
+    let _l = compileLines(program,syntaxoptions);
+    _l = compileLines(program,syntax);
+    var args = variables.args[ARGS.name];
+    var args2 = ARGS.args != null ? ARGS.args.split(/\s*(,)(?=(?:[^"']|["'][^"']*["'])*$)\s*/g) : null;
+    if (args2 != null && args != null){
+      for (var i = 0; i < args.length; i++) {
+        if (!(args[i] in fns)) {
+          readFunction("setvar " + args[i] + " = " + args2[i]);
+        } else if(!ignore) {
+          console.log("\x1b[31m%s\x1b[0m",`ExecutionError: Argument is already a function or variable.`);
+          if (variables.stopOnError.value){
+            process.exit();
+          }
+        }
+      }
+    }
+    var l = "";
+    var index = 0;
+    for (let [i, line] of _l.entries()){
+      readFunction(line, false, i);
+    }
+    if (args != null) {
+      for (var i = 0; i < args.length; i++) {
+        delete fns[args[i]];
+        delete variables[args[i]]
+      }
+    }
+    var ret = variables.return.value;
+    variables.return.value = null;
+    variables.return.locked = true;
+    returned = false;
+    return ret;
+  }
+
+native function return
+  (ARGS) => {
+    if (!variables.return.locked) {
+      variables.return.value = ARGS.code
+      returned = true;
+    } else {
+      if (!ignore) {
+        console.log("\x1b[31m%s\x1b[0m",`ExecutionError: Illegal return statement.`);
+        if (variables.stopOnError.value){
+          process.exit();
+        }
+      }
+    }
+  }
+
+constructor function ({gfunction $1[$2] {$3}},{[["1","name"],["2", "args"],["3","code"]]},{[]})
+constructor call ({call $1[$2]},{[["1","name"], ["2", "args"]]},{[]})
+constructor call ({call $1[]},{[["1","name"]]},{[]})
+constructor return ({return $1.},{[["1","code"]]},{["code"]})
+
+native function length
+  (ARGS) => {
+    if (typeof(ARGS.str) == "string") {
+      return ARGS.str.length;
+    } else {
+      return undefined;
+    }
+  }
+
+constructor length ({length $1},{[["1","str"]]},{["str"]})
+
+native function indexof
+  (ARGS) => {
+    if (typeof(ARGS.str) == "string" && typeof(ARGS.index) == "number") {
+      return ARGS.str[ARGS.index];
+    } else {
+      return undefined;
+    }
+  }
+
+constructor indexof ({characterindex $1 of $2},{[["1","index"], ["2", "str"]]},{["index", "str"]})
+
+constructor savevars ({savevars.},{[]},{[]})
+
+native function break
+  (ARGS) => {
+    broken = true;
+  }
+
+native function continue
+  (ARGS) => {
+    skip = true;
+  }
+
+constructor break ({break.},{[]},{[]})
+constructor continue ({continue.},{[]},{[]})
+
+native function cwd
+  (ARGS) => {
+    return process.cwd();
+  }
+
+constructor cwd ({cwd},{[]},{[]})
+
+native function dirname
+  (ARGS) => {
+    var path = require("path");
+    return path.dirname(filePath);
+  }
+
+constructor dirname ({dirname},{[]},{[]})
+
+native function basename
+  (ARGS) => {
+    var path = require("path");
+    return path.basename(filePath);
+  }
+
+constructor basename ({basename},{[]},{[]})
+
+native function filename
+  (ARGS) => {
+    return (filePath);
+  }
+
+constructor filename ({filename},{[]},{[]})
+
+//{if (getvar clearConsoleAtStart) then {
+  clear.
+}}//

@@ -1,0 +1,104 @@
+name WebServer {
+server
+start
+get
+post
+put
+patch
+delete
+status
+}
+
+native function server
+  (ARGS) => {
+    let HTTPServer = require(`${module_paths["WebServer.bclm"]}/HTTPServer.js`);
+    return new HTTPServer();
+  }
+
+constructor server ({server},{[]},{[]})
+
+native function start
+  (ARGS) => {
+    ARGS.server.start(ARGS.port, (port)=>{console.log(`Server started on 0.0.0.0:${port}`)}, (url, status, method)=>{console.log(`${method} "${url}": ${status}`)});
+  }
+
+constructor start ({start $1 = $2.},{[["1", "server"],["2", "port"]]},{["server","port"]})
+
+native function get
+  (ARGS) => {
+    ARGS.server.get(ARGS.url, (req, res)=>{
+      var regex = /^(\s+)?(\n)?[{}]?|(\s+)?(\n)?[{}]?$/gm;
+      res.MIMEType(ARGS.type);
+      res.send((ARGS.data).replace(regex,''));
+    });
+  }
+
+constructor get ({get $1 = $2 ($3) => $4.},{[["1","server"],["2","type"],["3","data"],["4","url"]]},{["server","type","url"]})
+
+native function post
+  (ARGS) => {
+    ARGS.server.post(ARGS.url, (req, res)=>{
+      var regex = /^(\s+)?(\n)?[{}]?|(\s+)?(\n)?[{}]?$/gm;
+      res.MIMEType(ARGS.type);
+      res.send((ARGS.data).replace(regex,''));
+    });
+  }
+
+constructor post ({post $1 = $2 ($3) => $4.},{[["1","server"],["2","type"],["3","data"],["4","url"]]},{["server","type","url"]})
+
+native function put
+  (ARGS) => {
+    ARGS.server.put(ARGS.url, (req, res)=>{
+      var regex = /^(\s+)?(\n)?[{}]?|(\s+)?(\n)?[{}]?$/gm;
+      res.MIMEType(ARGS.type);
+      res.send((ARGS.data).replace(regex,''));
+    });
+  }
+
+constructor put ({put $1 = $2 ($3) => $4.},{[["1","server"],["2","type"],["3","data"],["4","url"]]},{["server","type","url"]})
+
+native function patch
+  (ARGS) => {
+    ARGS.server.patch(ARGS.url, (req, res)=>{
+      var regex = /^(\s+)?(\n)?[{}]?|(\s+)?(\n)?[{}]?$/gm;
+      res.MIMEType(ARGS.type);
+      res.send((ARGS.data).replace(regex,''));
+    });
+  }
+
+constructor patch ({patch $1 = $2 ($3) => $4.},{[["1","server"],["2","type"],["3","data"],["4","url"]]},{["server","type","url"]})
+
+native function delete
+  (ARGS) => {
+    ARGS.server.delete(ARGS.url, (req, res)=>{
+      var regex = /^(\s+)?(\n)?[{}]?|(\s+)?(\n)?[{}]?$/gm;
+      res.MIMEType(ARGS.type);
+      res.send((ARGS.data).replace(regex,''));
+    });
+  }
+
+constructor delete ({delete $1 = $2 ($3) => $4.},{[["1","server"],["2","type"],["3","data"],["4","url"]]},{["server","type","url"]})
+
+native function status
+  (ARGS) => {
+    if (true) {
+      ARGS.server.handleFromStatus(ARGS.status, (req, res)=>{
+        var regex = /^(\s+)?(\n)?[{}]?|(\s+)?(\n)?[{}]?$/gm;
+        res.MIMEType(ARGS.type);
+        res.send((ARGS.data).replace(regex,''));
+      });
+    }
+  }
+
+constructor status ({status $1 = $2 ($3) => $4.},{[["1","server"],["2","type"],["3","data"],["4","status"]]},{["server","type","status"]})
+
+native function route
+  (ARGS) => {
+    ARGS.server.route(ARGS.url, (req, res)=>{
+      var regex = /^(\s+)?(\n)?[{}]?|(\s+)?(\n)?[{}]?$/gm;
+      res.MIMEType(ARGS.type);
+      res.send((ARGS.data).replace(regex,''));
+    });
+  }
+
+constructor route ({route $1 = $2 ($3) => $4.},{[["1","server"],["2","type"],["3","data"],["4","url"]]},{["server","type","url"]})

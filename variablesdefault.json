@@ -1,0 +1,38 @@
+{
+	"variable": {
+		"value": "Example varable",
+		"locked": true,
+		"constant": false
+	},
+	"version": {
+		"value": "1.0 (BETA)",
+		"locked": true,
+		"constant": false
+	},
+	"stopOnError": {
+		"value": true,
+		"locked": true,
+		"constant": false
+	},
+	"stopOnWarn": {
+		"value": false,
+		"locked": true,
+		"constant": false
+	},
+	"executionLevel": {
+		"value": 0,
+		"locked": true,
+		"constant": false,
+		"_comment": "Levels 0-2 on script execution. !!ONLY CHANGE THIS VARIABLE IF YOU KNOW WHAT YOU ARE DOING!!"
+	},
+	"showVarCreation": {
+		"value": false,
+		"locked": true,
+		"constant": false
+	},
+	"clearConsoleAtStart": {
+		"value": false,
+		"locked": true,
+		"constant": false
+	}
+}

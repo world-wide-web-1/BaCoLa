@@ -1,0 +1,8 @@
+name Objects {
+ObjectDefinition
+}
+EvalJS = {
+  var objects = {};
+}
+
+native function object()

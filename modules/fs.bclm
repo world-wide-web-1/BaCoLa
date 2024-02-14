@@ -1,0 +1,119 @@
+name FS {
+open
+read
+pathExists
+write
+writeNL
+appendData
+mkdir
+getDirectoryPath
+}
+
+native function open
+  (ARGS) => {
+    //var fs = require("fs");
+    return "<@type=\"fileInstance\" @fileSrc=\"" + ARGS.file.split("%MFOLDER%").join(__dirname + "/modules") + "\">";
+  }
+
+constructor open ({open $1},{[["1", "file"]]},{["file"]})
+
+native function read
+  (ARGS) => {
+    //var fs = require("fs");
+    var file;
+    if (decodeParams(ARGS.file, "type")[0] == "fileInstance"){
+      file = decodeParams(ARGS.file, "fileSrc")[0];
+      return fs.readFileSync(file).toString();
+    }else{
+      return "Cannot read a non-file instance!"
+    }
+  }
+
+constructor read ({read $1},{[["1", "file"]]},{["file"]})
+
+native function pathExists
+  (ARGS) => {
+    //var fs = require("fs");
+    var file;
+    if (decodeParams(ARGS.file, "type")[0] == "fileInstance"){
+      file = decodeParams(ARGS.file, "fileSrc")[0];
+      return fs.existsSync(file);
+    }
+  }
+
+constructor pathExists ({pathExists $1},{[["1", "file"]]},{["file"]})
+
+native function write
+  (ARGS) => {
+    //var fs = require("fs");
+    var file;
+    if (decodeParams(ARGS.file, "type")[0] == "fileInstance"){
+      file = decodeParams(ARGS.file, "fileSrc")[0];
+      fs.writeFileSync(file, ARGS.data.trim("\n").trim());
+    }else{
+      readFunction('warn = "Cannot write to a non-file instance!"');
+    }
+  }
+
+constructor write ({write $1 = $2.},{[["1", "file"],["2","data"]]},{["file", "data"]})
+
+native function writeNL
+  (ARGS) => {
+    //var fs = require("fs");
+    var file;
+    if (decodeParams(ARGS.file, "type")[0] == "fileInstance"){
+      file = decodeParams(ARGS.file, "fileSrc")[0];
+      fs.writeFileSync(file, fs.readFileSync(file).toString() + "\n" + ARGS.data);
+    }else{
+      readFunction('warn = "Cannot write to a non-file instance!"');
+    }
+  }
+
+constructor writeNL ({writeNewLine $1 = $2.},{[["1", "file"],["2","data"]]},{["file", "data"]})
+
+native function appendData
+  (ARGS) => {
+    //var fs = require("fs");
+    var file;
+    if (decodeParams(ARGS.file, "type")[0] == "fileInstance"){
+      file = decodeParams(ARGS.file, "fileSrc")[0];
+      fs.writeFileSync(file, fs.readFileSync(file).toString() + ARGS.data);
+    }else{
+       readFunction('warn = "Cannot write to a non-file instance!"');
+    }
+  }
+
+constructor appendData ({append $1 = $2.},{[["1", "file"],["2","data"]]},{["file", "data"]})
+
+native function mkdir
+  (ARGS) => {
+    //var fs = require("fs");
+    var dir = ARGS.dir;
+    if (!fs.existsSync(dir)){
+      fs.mkdirSync(dir, {recursive: true});
+    }else{
+      readFunction('warn = "Folder(s) already exists!"');
+    }
+  }
+
+constructor mkdir ({mkdir $1.},{[["1", "dir"]]},{["dir"]})
+
+native function getDirectoryPath
+  (ARGS) => {
+    //var fs = require("fs");
+    var file;
+    if (decodeParams(ARGS.file, "type")[0] == "fileInstance") {
+      file = decodeParams(ARGS.file, "fileSrc")[0];
+      var dir = file.split(/[\/\\]/g)
+      delete dir[dir.length-1];
+      dir = dir.join("/");
+      return dir
+    }
+  }
+
+constructor getDirectoryPath ({getDirPath $1},{[["1", "file"]]},{["file"]})
+
+//{
+  NOTE: This module will not work if the import statment is after (if existing) the safe mode import!
+  If you have the safe mode import, and this is after, swap them.
+}//

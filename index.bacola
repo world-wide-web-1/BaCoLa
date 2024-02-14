@@ -1,0 +1,4 @@
+print = "Example Script executing!"
+import "%MFOLDER%/exampleModule.bclm"
+example = "Executed!"
+unload Example

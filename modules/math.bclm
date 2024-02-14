@@ -1,0 +1,259 @@
+name Math {
+PI
+E
+SQRT2
+SQRT1_2
+LN2
+LN10
+LOG2E
+LOG10E
+round
+ceil
+floor
+trunc
+sign
+sqrt
+abs
+sin
+cos
+log
+log2
+log10
+sinh
+tanh
+cosh
+atanh
+asin
+asinh
+atan
+cbrt
+acos
+acosh
+pow
+min
+max
+}
+
+native function PI
+  (ARGS) => {
+    return Math.PI;
+  }
+
+native function E
+  (ARGS) => {
+    return Math.E;
+  }
+
+native function SQRT2
+  (ARGS) => {
+    return Math.SQRT2;
+  }
+
+native function SQRT1_2
+  (ARGS) => {
+    return Math.SQRT1_2;
+  }
+
+native function LN2
+  (ARGS) => {
+    return Math.LN2;
+  }
+
+native function LN10
+  (ARGS) => {
+    return Math.LN10;
+  }
+
+native function LOG2E
+  (ARGS) => {
+    return Math.LOG2E;
+  }
+
+native function LOG10E
+  (ARGS) => {
+    return Math.LOG10E;
+  }
+
+constructor PI ({PI},{[]},{[]})
+constructor E ({E},{[]},{[]})
+constructor SQRT2 ({SQRT2},{[]},{[]})
+constructor SQRT1_2 ({SQRT1_2},{[]},{[]})
+constructor LN2 ({LN2},{[]},{[]})
+constructor LN10 ({LN10},{[]},{[]})
+constructor LOG2E ({LOG2E},{[]},{[]})
+constructor LOG10E ({LOG10E},{[]},{[]})
+
+native function round
+  (ARGS) => {
+    return Math.round(ARGS.x);
+  }
+
+constructor round ({round $1},{[["1", "x"]]},{["x"]})
+
+native function ceil
+  (ARGS) => {
+    return Math.ceil(ARGS.x);
+  }
+
+constructor ceil ({ceil $1},{[["1", "x"]]},{["x"]})
+
+native function floor
+  (ARGS) => {
+    return Math.floor(ARGS.x);
+  }
+
+constructor floor ({floor $1},{[["1", "x"]]},{["x"]})
+
+native function trunc
+  (ARGS) => {
+    return Math.trunc(ARGS.x);
+  }
+
+constructor trunc ({trunc $1},{[["1", "x"]]},{["x"]})
+
+native function sign
+  (ARGS) => {
+    return Math.sign(ARGS.x);
+  }
+
+constructor sign ({sign $1},{[["1", "x"]]},{["x"]})
+
+native function sqrt
+  (ARGS) => {
+    return Math.sqrt(ARGS.x);
+  }
+
+constructor sqrt ({sqrt $1},{[["1", "x"]]},{["x"]})
+
+native function abs
+  (ARGS) => {
+    return Math.abs(ARGS.x);
+  }
+
+constructor abs ({abs $1},{[["1", "x"]]},{["x"]})
+
+native function sin
+  (ARGS) => {
+    return Math.sin(ARGS.x);
+  }
+
+constructor sin ({sin $1},{[["1", "x"]]},{["x"]})
+
+native function cos
+  (ARGS) => {
+    return Math.cos(ARGS.x);
+  }
+
+constructor cos ({cos $1},{[["1", "x"]]},{["x"]})
+
+native function log
+  (ARGS) => {
+    return Math.log(ARGS.x);
+  }
+
+constructor log ({log $1},{[["1", "x"]]},{["x"]})
+
+native function log2
+  (ARGS) => {
+    return Math.log2(ARGS.x);
+  }
+
+constructor log2 ({log2 $1},{[["1", "x"]]},{["x"]})
+
+native function log10
+  (ARGS) => {
+    return Math.log10(ARGS.x);
+  }
+
+constructor log10 ({log10 $1},{[["1", "x"]]},{["x"]})
+
+native function sinh
+  (ARGS) => {
+    return Math.sinh(ARGS.x);
+  }
+
+constructor sinh ({sinh $1},{[["1", "x"]]},{["x"]})
+
+native function tanh
+  (ARGS) => {
+    return Math.tanh(ARGS.x);
+  }
+
+constructor tanh ({tanh $1},{[["1", "x"]]},{["x"]})
+
+native function cosh
+  (ARGS) => {
+    return Math.cosh(ARGS.x);
+  }
+
+constructor cosh ({cosh $1},{[["1", "x"]]},{["x"]})
+
+native function atanh
+  (ARGS) => {
+    return Math.atanh(ARGS.x);
+  }
+
+constructor atanh ({atanh $1},{[["1", "x"]]},{["x"]})
+
+native function asin
+  (ARGS) => {
+    return Math.asin(ARGS.x);
+  }
+
+constructor asin ({asin $1},{[["1", "x"]]},{["x"]})
+
+native function asinh
+  (ARGS) => {
+    return Math.asinh(ARGS.x);
+  }
+
+constructor asinh ({asinh $1},{[["1", "x"]]},{["x"]})
+
+native function atan
+  (ARGS) => {
+    return Math.atan(ARGS.x);
+  }
+
+constructor atan ({atan $1},{[["1", "x"]]},{["x"]})
+
+native function cbrt
+  (ARGS) => {
+    return Math.cbrt(ARGS.x);
+  }
+
+constructor cbrt ({cbrt $1},{[["1", "x"]]},{["x"]})
+
+native function acos
+  (ARGS) => {
+    return Math.acos(ARGS.x);
+  }
+
+constructor acos ({acos $1},{[["1", "x"]]},{["x"]})
+
+native function acosh
+  (ARGS) => {
+    return Math.acosh(ARGS.x);
+  }
+
+constructor acosh ({acosh $1},{[["1", "x"]]},{["x"]})
+
+native function pow
+  (ARGS) => {
+    return Math.pow(ARGS.x, ARGS.y);
+  }
+
+constructor pow ({pow $1 $2},{[["1", "x"],["2", "y"]]},{["x","y"]})
+
+native function min
+  (ARGS) => {
+    return Math.min(ARGS.x, ARGS.y);
+  }
+
+constructor min ({min $1 #2},{[["1", "x"],["2", "y"]]},{["x","y"]})
+
+native function max
+  (ARGS) => {
+    return Math.max(ARGS.x, ARGS.y);
+  }
+
+constructor max ({max $1 #2},{[["1", "x"],["2", "y"]]},{["x","y"]})

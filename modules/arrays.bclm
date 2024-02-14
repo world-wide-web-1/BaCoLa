@@ -1,0 +1,141 @@
+name Arrays {
+array
+getindex
+setindex
+push
+insertLast
+insertFirst
+remove
+}
+
+native function array
+  (ARGS) => {
+    var split_str = ARGS.txt.split(/,\s+|,/g);
+    var obj = {type: "array"};
+    for (var i = 0; i < split_str.length; i++){
+      obj[i] = split_str[i].replaceAll("\\", "\\\\").replaceAll("\"", "\\\"");
+      if (i == split_str.length - 1) {
+        return encodeParams(obj);
+      }
+    }
+  }
+
+constructor array ({[$1]},{[["1", "txt"]]},{[]})
+
+native function getindex
+  (ARGS) => {
+    try {
+      var array = ARGS.arr;
+      if (decodeParams(array, "type")[0] == "array") {
+        return readFunction(decodeParams(array, ARGS.index)[0].replaceAll("\\\"", "\""));
+      } else {
+        return "Cannot get an index from a non-array item!";
+      }
+    } catch (err) {
+      return undefined;
+    }
+  }
+
+constructor getindex ({getIndex $1[$2]},{[["1", "arr"], ["2", "index"]]},{["arr", "index"]})
+
+native function setindex
+  (ARGS) => {
+    var array = ARGS.arr;
+    if (decodeParams(array, "type")[0] == "array") {
+      array = array.substring(1, array.length-1);
+      var params = array.match(/@.+=".+"||@.+=""/g).join("").split(" ")
+      array = "<";
+      for (var i = 0; i < params.length; i++) {
+        if (params[i].split("=")[0] == "@" + ARGS.index) {
+          array += `${i != 0 ? " ": ""}${params[i].replaceAll(params[i].match(/=".+"||=""/g).join(""), `="${ARGS.data.replaceAll("\\", "\\\\").replaceAll("\"", "\\\"")}"`)}`;
+        }else{
+          array += `${i != 0 ? " ": ""}${params[i]}`;
+        }
+      }
+      array += ">";
+      return array;
+    } else {
+      return "Cannot get an index from a non-array item!";
+    }
+  }
+
+constructor setindex ({setIndex $1[$2] = $3},{[["1", "arr"], ["2", "index"], ["3", "data"]]},{["arr", "index"]})
+
+//{
+native function push
+  (ARGS) => {
+    var array = ARGS.arr;
+    if (decodeParams(array, "type")[0] == "array") {
+      var arr = array;
+      array = "<";
+      array += arr.slice(1,-1);
+      array += ` @${arr.split(" ").length-1}="${ARGS.data.replaceAll("\\", "\\\\").replaceAll("\"", "\\\"")}"`;
+      array += ">";
+      return array;
+    } else {
+      return "Cannot get an index from a non-array item!";
+    }
+  }
+
+constructor push ({push $1 = $2},{[["1", "arr"], ["2", "data"]]},{["arr"]})
+}//
+
+native function insertLast
+  (ARGS) => {
+    var array = ARGS.arr;
+    if (decodeParams(array, "type")[0] == "array") {
+      var arr = array;
+      array = "<";
+      array += arr.slice(1,-1);
+      array += ` @${arr.split(" ").length-1}="${ARGS.data.replaceAll("\\", "\\\\").replaceAll("\"", "\\\"")}"`;
+      array += ">";
+      return array;
+    } else {
+      return "Cannot set an index from a non-array item!";
+    }
+  }
+
+constructor insertLast ({insertLast $1 = $2},{[["1", "arr"], ["2", "data"]]},{["arr"]})
+
+native function insertFirst
+  (ARGS) => {
+    var array = ARGS.arr;
+    if (decodeParams(array, "type")[0] == "array") {
+      var arr = `<@type="array" @0="${ARGS.data.replaceAll("\\", "\\\\").replaceAll("\"", "\\\"")}" `;
+      for (var i = 1; i < array.split(" ").length; i++){
+        arr += ` @${i}="${decodeParams(array, i-1)[0]}"`;
+      }
+      arr += ">";
+      return arr;
+    } else {
+      return "Cannot set an index from a non-array item!";
+    }
+  }
+
+constructor insertFirst ({insertFirst $1 = $2},{[["1", "arr"], ["2", "data"]]},{["arr"]})
+
+native function remove
+  (ARGS) => {
+    var array = ARGS.arr;
+    if (decodeParams(array, "type")[0] == "array") {
+      array = array.substring(1, array.length-1);
+      var params = array.match(/@.+=".+"||@.+=""/g).join("").split(" ")
+      array = "<";
+      params[ARGS.index+2] = `@${ARGS.index}="undefined"`
+      var counter = 0;
+      array += params.join(" ")
+      array += ">";
+      return array;
+    } else {
+      return "Cannot remove an index from a non-array item!";
+    }
+  }
+
+constructor remove ({remove $1[$2]},{[["1", "arr"], ["2", "index"]]},{["arr", "index"]})
+
+//To import this module run:
+//
+//import "%MFOLDER%/exampleModule"
+//
+//Remember to not add ".bclm" in the import statment. 
+//%MFOLDER% is ' __dirname + "/modules" ' in NodeJS
