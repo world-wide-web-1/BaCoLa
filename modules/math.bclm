@@ -32,6 +32,9 @@ acosh
 pow
 min
 max
+random
+randomfloor
+randombool
 }
 
 native function PI
@@ -257,3 +260,21 @@ native function max
   }
 
 constructor max ({max $1 #2},{[["1", "x"],["2", "y"]]},{["x","y"]})
+
+native function random
+  (ARGS) => {
+    return Math.random() * (ARGS.max - ARGS.min + 1) + ARGS.min;
+  }
+constructor random ({random $1 $2},{[["1","min"], ["2", "max"]]},{["min","max"]})
+native function randomfloor
+  (ARGS) => {
+    return Math.floor(Math.random() * (ARGS.max - ARGS.min + 1)) + ARGS.min;
+  }
+constructor randomfloor ({randomint $1 $2},{[["1","min"], ["2", "max"]]},{["min","max"]})
+
+native function randombool
+  (ARGS) => {
+    return Boolean(Math.floor(Math.random() * (1 - 0 + 1)) + 0 ? 1 : 0);
+  }
+
+constructor randombool ({randombool},{[]},{[]})
