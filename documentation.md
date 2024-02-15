@@ -271,4 +271,4 @@
 > > Import location: `%MFOLDER%/safeMode.bclm`
 > ### <p id="arrays"></p>arrays
 > > Import location: `%MFOLDER%/arrays.bclm`\
-> > Documentation: [arrays_documentation.md](modules/WebServer_documentation.md)
+> > Documentation: [arrays_documentation.md](modules/arrays_documentation.md)

@@ -2,7 +2,6 @@ name Arrays {
 array
 getindex
 setindex
-push
 insertLast
 insertFirst
 remove
@@ -59,7 +58,7 @@ native function setindex
     }
   }
 
-constructor setindex ({setIndex $1[$2] = $3},{[["1", "arr"], ["2", "index"], ["3", "data"]]},{["arr", "index"]})
+constructor setindex ({setIndex $1[$2] = $3.},{[["1", "arr"], ["2", "index"], ["3", "data"]]},{["arr", "index"]})
 
 //{
 native function push
@@ -77,7 +76,7 @@ native function push
     }
   }
 
-constructor push ({push $1 = $2},{[["1", "arr"], ["2", "data"]]},{["arr"]})
+constructor push ({push $1 = $2.},{[["1", "arr"], ["2", "data"]]},{["arr"]})
 }//
 
 native function insertLast
@@ -95,7 +94,7 @@ native function insertLast
     }
   }
 
-constructor insertLast ({insertLast $1 = $2},{[["1", "arr"], ["2", "data"]]},{["arr"]})
+constructor insertLast ({insertLast $1 = $2.},{[["1", "arr"], ["2", "data"]]},{["arr"]})
 
 native function insertFirst
   (ARGS) => {
@@ -112,7 +111,7 @@ native function insertFirst
     }
   }
 
-constructor insertFirst ({insertFirst $1 = $2},{[["1", "arr"], ["2", "data"]]},{["arr"]})
+constructor insertFirst ({insertFirst $1 = $2.},{[["1", "arr"], ["2", "data"]]},{["arr"]})
 
 native function remove
   (ARGS) => {
@@ -131,7 +130,7 @@ native function remove
     }
   }
 
-constructor remove ({remove $1[$2]},{[["1", "arr"], ["2", "index"]]},{["arr", "index"]})
+constructor remove ({remove $1[$2].},{[["1", "arr"], ["2", "index"]]},{["arr", "index"]})
 
 //To import this module run:
 //
