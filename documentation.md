@@ -76,7 +76,7 @@
 > ### Defining a Function
 > > To define a function, you need to use the `gfunction` constructor.
 > > ```
-> > gfunction <name>[<args>] {
+> > gfunction <name>[<argument(s)>] {
 > >   <code>
 > > }
 > > ```
@@ -84,6 +84,6 @@
 > ### Calling a Function
 > > To call a function, you use the `call` function.
 > > ```
-> > call <name>[<args>]
-> > call <name>[<args>].
+> > call <name>[<argument(s)>]
+> > call <name>[<argument(s)>].
 > > ```
