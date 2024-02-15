@@ -54,7 +54,9 @@
 > print = ("Hello" + ", " + "World!").
 > ```
 > I made this from an idea, and it became a whole project for me.\
-> I had an idea of making a simple programming language, and I had dedicated more than thought I would.
+> I had an idea of making a simple programming language, and I had dedicated more than thought I would.\
+> When you see periods at the end of certain parts, it is optional to have them, if you don't, you cannot every have one at the end.\
+> Also, you need to have the spaces if there are spaces in the description of how to use the function.
 # <p id="comments"></p>Comments
 > For a single-line comment, you do the following:
 > ```
