@@ -1,5 +1,5 @@
 ###### ```print = "Hello, BaCoLa!".```
-##### BaCoLa is short for **Ba**sic **Co**ding **La**nguage.
+##### BaCoLa (Buh-Kol-Uh) is short for **Ba**sic **Co**ding **La**nguage.
 \
 BaCoLa is just something I like to work on in my spare time.\
 The basic example uses imports:

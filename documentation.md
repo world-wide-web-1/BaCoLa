@@ -5,6 +5,8 @@
 - [Console Commands](#console_commands)
   - [Printing to the Console](#printing_to_the_console)
   - [Clearing the Console](#clearing_the_console)
+  - [Errors](#errorings)
+  - [Warnings](#warnings)
 - [Variables](#variables)
   - [Defining Variables](#defining_variables)
   - [Reading Variables](#reading_variables)
@@ -28,6 +30,7 @@
   - [If...Then...Else...](#if_then_else)
   - [True and False](#true_and_false)
   - [Logic Gates](#logic_gates)
+  - [Other Operators](#other_operators)
 - [Constructors](#constructors)
   - [Native Constructor](#native_constructor)
   - [Constructor Definition](#constructor_definition)
@@ -80,6 +83,16 @@
 > > ```
 > > clear.
 > > ```
+> ### <p id="errors"></p>Errors
+> > Errors can be put into the console using the `error` function.
+> > ```
+> > error = <value>.
+> > ```
+> ### <p id="warnings"></p>Warnings
+> > Warnings can be put into the console using the `warn` function.
+> > ```
+> > warn = <value>.
+> > ```
 # <p id="variables"></p>Variables
 > ### <p id="defining_variables"></p>Defining Variables
 > > To define a vaariable, use the `setvar` function.
@@ -100,7 +113,7 @@
 > > ```
 > > \
 > >**This function is reserved for level 2!**\
-> > To write to or make a locked variable, use the function `setvarunlocked`.\
+> > To write to or make a locked variable, use the function `setlockedvar`.\
 > > ```setlockedvar <name> = <value>.```
 > ### <p id="reading_variables"></p>Reading Variables
 > > To read a variable, you can just type the name of it, or you can use the `getvar` function.
@@ -177,6 +190,11 @@
 > >   <code>
 > > }
 > > ```
+> > Or you could do:
+> > ```
+> > <condition> ? <code> : <code>
+> > // if condition then <code> else <code>
+> > ```
 > ### <p id="true_and_false"></p>True and False
 > > True and False, 1 and 0.\
 > > If you want to check if something is equal to another thing, you do `<data> == <data>`.\
@@ -187,6 +205,11 @@
 > > OR gate: `<boolean> or <boolean>`\
 > > XOR gate: `<boolean> xor <boolean>`\
 > > NOT gate: `not <boolean>`
+> ### <p id="other_operators"></p>Other Operators
+> > Greater Than: `<number> > <number>`
+> > Less Than: `<number> < <number>`
+> > Greather Than or Equal To: `<number> >= <number>`
+> > Less Than or Equal To: `<number> <= <number>`
 # <p id="constructors"></p>Constructors
 > These following things are for execution level 1+
 > ### <p id="native_constructor"></p>Native Constructor
@@ -265,7 +288,7 @@
 > > Import location: `%MFOLDER%/fs.bclm`\
 > > Documentation: [fs_documentation.md](modules/fs_documentation.md)
 > ### <p id="math"></p>math
-> > Import location: `%MFOLDER%/math.bclm`\
+> > Import location: `%MFOLDER%/math.bclm`set\
 > > Documentation: [math_documentation.md](modules/math_documentation.md)
 > ### <p id="safemode"></p>safeMode
 > > Import location: `%MFOLDER%/safeMode.bclm`
