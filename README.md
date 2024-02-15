@@ -3,7 +3,8 @@
 \
 BaCoLa is just something I like to work on in my spare time.\
 The basic example uses imports:
-```print = "Example Script executing!"
+```
+print = "Example Script executing!"
 import "%MFOLDER%/exampleModule.bclm"
 example = "Executed!"
 unload Example
