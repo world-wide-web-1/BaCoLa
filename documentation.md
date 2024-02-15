@@ -265,8 +265,8 @@
 > > Import location: `%MFOLDER%/fs.bclm`\
 > > Documentation: [fs_documentation.md](modules/fs_documentation.md)
 > ### <p id="math"></p>math
-> > Import location: `%MFOLDER%/math.bclm`<!--\
-> > Documentation: [math_documentation.md](modules/math_documentation.md)-->
+> > Import location: `%MFOLDER%/math.bclm`\
+> > Documentation: [math_documentation.md](modules/math_documentation.md)
 > ### <p id="safemode"></p>safeMode
 > > Import location: `%MFOLDER%/safeMode.bclm`
 > ### <p id="arrays"></p>arrays
