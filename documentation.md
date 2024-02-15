@@ -5,7 +5,7 @@
 - [Console Commands](#console_commands)
   - [Printing to the Console](#printing_to_the_console)
   - [Clearing the Console](#clearing_the_console)
-  - [Errors](#errorings)
+  - [Errors](#errors)
   - [Warnings](#warnings)
 - [Variables](#variables)
   - [Defining Variables](#defining_variables)
