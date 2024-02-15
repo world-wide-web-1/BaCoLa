@@ -11,7 +11,7 @@ unload Example
 That script is equivalent to (also in BaCoLa)
 ```print = "Hello, World!".```\
 If you may have noticed, there are periods at the end of **some** lines.
-# [**Documentation**](documentation.html)
+# [**Documentation**](documentation.md)
 
 This programming language has lots more work to do on it.
 
