@@ -5,7 +5,6 @@ var cargs = process.argv.slice(2);
 var autoname = false
 var scriptFile = `${cargs[0] == undefined ? `${autoname ? "index" : undefined}` : cargs[0]}${autoname ? `.${fileType}` : ""}`;
 var variables = require(__dirname + "/variables.json");
-var executionLvl = 0; //0-2, 2 being the highest.
 var module_paths = {};
 var constructorBackup = [];
 var li = 0;
