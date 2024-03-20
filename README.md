@@ -1,5 +1,6 @@
 ###### ```print = "Hello, BaCoLa!".```
 ##### BaCoLa (Buh-Kol-Uh) is short for **Ba**sic **Co**ding **La**nguage.
+### Note: This programming language doesn't work on Windows for some reason, I am trying to fix it.
 \
 BaCoLa is just something I like to work on in my spare time.\
 The basic example uses imports:
